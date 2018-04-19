@@ -1,0 +1,1141 @@
+fileFormatVersion: 2
+guid: 2a8e59defb5e7fb4992010161e966ba2
+timeCreated: 1521994832
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: Chest
+    100006: Cube
+    100008: Cube_001
+    100010: Fingers01_L
+    100012: Fingers01_R
+    100014: Fingers02_L
+    100016: Fingers02_R
+    100018: Foot_L
+    100020: Foot_R
+    100022: Hand_Hold_L
+    100024: Hand_Hold_R
+    100026: Hand_L
+    100028: Hand_R
+    100030: Head
+    100032: Hips
+    100034: Lower_Arm_L
+    100036: Lower_Arm_R
+    100038: Lower_Leg_L
+    100040: Lower_Leg_R
+    100042: Neck
+    100044: //RootNode
+    100046: Shoulder_L
+    100048: Shoulder_R
+    100050: Spine
+    100052: Thumb01_L
+    100054: Thumb01_R
+    100056: Thumb02_L
+    100058: Thumb02_R
+    100060: Toes_L
+    100062: Toes_R
+    100064: Upper_Arm_L
+    100066: Upper_Arm_R
+    100068: Upper_Leg_L
+    100070: Upper_Leg_R
+    400000: Armature
+    400002: Bone
+    400004: Chest
+    400006: Cube
+    400008: Cube_001
+    400010: Fingers01_L
+    400012: Fingers01_R
+    400014: Fingers02_L
+    400016: Fingers02_R
+    400018: Foot_L
+    400020: Foot_R
+    400022: Hand_Hold_L
+    400024: Hand_Hold_R
+    400026: Hand_L
+    400028: Hand_R
+    400030: Head
+    400032: Hips
+    400034: Lower_Arm_L
+    400036: Lower_Arm_R
+    400038: Lower_Leg_L
+    400040: Lower_Leg_R
+    400042: Neck
+    400044: //RootNode
+    400046: Shoulder_L
+    400048: Shoulder_R
+    400050: Spine
+    400052: Thumb01_L
+    400054: Thumb01_R
+    400056: Thumb02_L
+    400058: Thumb02_R
+    400060: Toes_L
+    400062: Toes_R
+    400064: Upper_Arm_L
+    400066: Upper_Arm_R
+    400068: Upper_Leg_L
+    400070: Upper_Leg_R
+    2100000: Material
+    2100002: hilt
+    2100004: Blade_001
+    4300000: Cube
+    4300002: Cube_001
+    7400000: Default Take
+    7400002: Stab_2hand
+    7400004: Swing-Stab
+    7400006: Swing_2Hand_1
+    7400008: Walk
+    7400010: walk_with_sword
+    7400012: Walk (1)
+    7400014: Idle
+    7400016: sword_walk
+    7400018: run_with_sword
+    7400020: Swing_2Hand_2
+    7400022: Slide_wth_sword
+    9500000: //RootNode
+    13700000: Cube
+    13700002: Cube_001
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Default Take' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Lower_Leg_L' has scale animation that will
+      be discarded.\n\t'Foot_L' has scale animation that will be discarded.\n\nClip
+      'run_with_sword' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Lower_Leg_L'
+      has scale animation that will be discarded.\n\t'Foot_L' has scale animation
+      that will be discarded.\n\nClip 'Slide_wth_sword' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Lower_Leg_L' has scale animation that will
+      be discarded.\n\t'Foot_L' has scale animation that will be discarded.\n\nClip
+      'Stab_2hand' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Foot_L'
+      has scale animation that will be discarded.\n\nClip 'Swing-Stab' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Foot_L' has scale animation
+      that will be discarded.\n\nClip 'Swing_2Hand_1' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Upper_Leg_L' has translation animation that
+      will be discarded.\n\t'Lower_Leg_L' has scale animation that will be discarded.\n\t'Foot_L'
+      has scale animation that will be discarded.\n\t'Upper_Leg_R' has translation
+      animation that will be discarded.\n\nClip 'Swing_2Hand_3' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation DOF
+      on avatar to improve retargeting quality.\n\t'Foot_L' has scale animation that
+      will be discarded.\n\nClip 'sword_walk' has import animation warnings that might
+      lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
+      retargeting quality.\n\t'Upper_Leg_L' has translation animation that will be
+      discarded.\n\t'Lower_Leg_L' has scale animation that will be discarded.\n\t'Foot_L'
+      has scale animation that will be discarded.\n\t'Upper_Leg_R' has translation
+      animation that will be discarded.\n\nClip 'Walk' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Upper_Leg_L' has translation animation that
+      will be discarded.\n\t'Lower_Leg_L' has scale animation that will be discarded.\n\t'Foot_L'
+      has scale animation that will be discarded.\n\t'Upper_Leg_R' has translation
+      animation that will be discarded.\n\nClip 'walk_with_sword_still' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Upper_Leg_L' has translation
+      animation that will be discarded.\n\t'Lower_Leg_L' has scale animation that
+      will be discarded.\n\t'Foot_L' has scale animation that will be discarded.\n\t'Upper_Leg_R'
+      has translation animation that will be discarded.\n"
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Default
+      Take':\n\tLeftLowerLeg average position error 0.2 mm and maximum position error
+      1.4 mm at time 0: 0 (0.0%) Frame 0\n\nRetargeting quality report for clip 'Idle':\n\tLeftLowerLeg
+      average position error 1.0 mm and maximum position error 1.6 mm at time 0: 0
+      (0.0%) Frame 0\n\nRetargeting quality report for clip 'run_with_sword':\n\tRetargeting
+      quality is good. No significant differences with original animation were found.\n\nRetargeting
+      quality report for clip 'Slide_wth_sword':\n\tLeftLowerLeg average position
+      error 0.3 mm and maximum position error 1.4 mm at time 0: 0 (0.0%) Frame 0\n\nRetargeting
+      quality report for clip 'Stab_2hand':\n\tLeftLowerLeg average position error
+      4.0 mm and maximum position error 4.0 mm at time 0: 8 (61.5%) Frame 8\n\tLeftFoot
+      average position error 4.0 mm and maximum position error 4.0 mm at time 0: 8
+      (61.5%) Frame 8\n\tRightLowerLeg average position error 10.8 mm and maximum
+      position error 10.8 mm at time 0:10 (76.9%) Frame 10\n\tRightFoot average position
+      error 10.8 mm and maximum position error 10.8 mm at time 0:10 (76.9%) Frame
+      10\n\tRightLowerArm average position error 0.3 mm and maximum position error
+      1.4 mm at time 0: 2 (15.4%) Frame 2\n\nRetargeting quality report for clip 'Swing-Stab':\n\tLeftLowerLeg
+      average position error 4.0 mm and maximum position error 4.0 mm at time 0: 2
+      (11.8%) Frame 2\n\tLeftFoot average position error 4.0 mm and maximum position
+      error 4.0 mm at time 0:12 (70.6%) Frame 12\n\tRightLowerLeg average position
+      error 10.8 mm and maximum position error 10.8 mm at time 0:14 (82.4%) Frame
+      14\n\tRightFoot average position error 10.8 mm and maximum position error 10.8
+      mm at time 0:14 (82.4%) Frame 14\n\nRetargeting quality report for clip 'Swing_2Hand_1':\n\tLeftLowerLeg
+      average position error 3.3 mm and maximum position error 4.0 mm at time 0: 3
+      (42.9%) Frame 3\n\tLeftFoot average position error 3.1 mm and maximum position
+      error 4.0 mm at time 0: 7 (100.0%) Frame 7\n\tRightLowerLeg average position
+      error 8.4 mm and maximum position error 10.8 mm at time 0: 4 (57.1%) Frame 4\n\tRightFoot
+      average position error 8.4 mm and maximum position error 10.8 mm at time 0:
+      4 (57.1%) Frame 4\n\nRetargeting quality report for clip 'Swing_2Hand_3':\n\tLeftLowerLeg
+      average position error 4.0 mm and maximum position error 4.0 mm at time 0:16
+      (59.3%) Frame 16\n\tLeftFoot average position error 4.0 mm and maximum position
+      error 4.0 mm at time 0: 6 (22.2%) Frame 6\n\tRightLowerLeg average position
+      error 10.8 mm and maximum position error 10.8 mm at time 1: 3 (100.0%) Frame
+      27\n\tRightFoot average position error 10.8 mm and maximum position error 10.8
+      mm at time 1: 3 (100.0%) Frame 27\n\tLeftLowerArm average position error 0.8
+      mm and maximum position error 3.5 mm at time 0: 7 (25.9%) Frame 7\n\tRightLowerArm
+      average position error 0.2 mm and maximum position error 1.1 mm at time 1: 0
+      (88.9%) Frame 24\n\nRetargeting quality report for clip 'sword_walk':\n\tLeftLowerLeg
+      average position error 7.3 mm and maximum position error 10.8 mm at time 0:15
+      (51.7%) Frame 15\n\tLeftFoot average position error 7.3 mm and maximum position
+      error 10.8 mm at time 0:15 (51.7%) Frame 15\n\tRightLowerLeg average position
+      error 7.5 mm and maximum position error 10.8 mm at time 1: 5 (100.0%) Frame
+      29\n\tRightFoot average position error 7.5 mm and maximum position error 10.8
+      mm at time 1: 5 (100.0%) Frame 29\n\nRetargeting quality report for clip 'Walk':\n\tLeftLowerLeg
+      average position error 7.7 mm and maximum position error 14.8 mm at time 1:
+      0 (100.0%) Frame 24\n\tLeftFoot average position error 7.7 mm and maximum position
+      error 14.8 mm at time 1: 0 (100.0%) Frame 24\n\tRightLowerLeg average position
+      error 7.1 mm and maximum position error 14.8 mm at time 0:12 (50.0%) Frame 12\n\tRightFoot
+      average position error 7.1 mm and maximum position error 14.8 mm at time 0:12
+      (50.0%) Frame 12\n\tLeftLowerArm average position error 0.6 mm and maximum position
+      error 1.6 mm at time 0:18 (75.0%) Frame 18\n\tRightLowerArm average position
+      error 0.5 mm and maximum position error 1.3 mm at time 0: 6 (25.0%) Frame 6\n\nRetargeting
+      quality report for clip 'walk_with_sword_still':\n\tLeftLowerLeg average position
+      error 7.3 mm and maximum position error 10.8 mm at time 0:13 (50.0%) Frame 13\n\tLeftFoot
+      average position error 7.3 mm and maximum position error 10.8 mm at time 0:13
+      (50.0%) Frame 13\n\tRightLowerLeg average position error 7.5 mm and maximum
+      position error 10.8 mm at time 0: 0 (0.0%) Frame 0\n\tRightFoot average position
+      error 7.5 mm and maximum position error 10.8 mm at time 0: 0 (0.0%) Frame 0\n"
+    animationDoRetargetingWarnings: 1
+    importAnimatedCustomProperties: 1
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Idle
+      firstFrame: 0
+      lastFrame: 149
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stab_2hand
+      takeName: Stab_2hand
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Swing-Stab
+      takeName: Swing-Stab
+      firstFrame: 0
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Swing_2Hand_1
+      takeName: Swing_2Hand_1
+      firstFrame: 0
+      lastFrame: 13.1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: run_with_sword
+      takeName: run_with_sword
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 2
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 3
+    - serializedVersion: 16
+      name: sword_walk
+      takeName: sword_walk
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.3891212
+        functionName: NewEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Cube
+        weight: 0
+      - path: Cube_001
+        weight: 0
+      - path: Armature
+        weight: 1
+      - path: Armature/Hips
+        weight: 1
+      - path: Armature/Hips/Spine
+        weight: 1
+      - path: Armature/Hips/Spine/Chest
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Neck
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Neck/Head
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Hand_Hold_L
+        weight: 0
+      - path: Armature/Hips/Spine/Chest/Shoulder_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Bone
+        weight: 0
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Hand_Hold_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L/Lower_Leg_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R/Lower_Leg_R/Foot_R/Toes_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Swing_2Hand_2
+      takeName: Swing_2Hand_3
+      firstFrame: 0
+      lastFrame: 27
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Cube
+        weight: 0
+      - path: Cube_001
+        weight: 0
+      - path: Armature
+        weight: 1
+      - path: Armature/Hips
+        weight: 1
+      - path: Armature/Hips/Spine
+        weight: 1
+      - path: Armature/Hips/Spine/Chest
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Neck
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Neck/Head
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Hand_Hold_L
+        weight: 0
+      - path: Armature/Hips/Spine/Chest/Shoulder_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Bone
+        weight: 0
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Hand_Hold_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L/Lower_Leg_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R/Lower_Leg_R/Foot_R/Toes_R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Slide_wth_sword
+      takeName: Slide_wth_sword
+      firstFrame: 0
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Cube
+        weight: 0
+      - path: Cube_001
+        weight: 0
+      - path: Armature
+        weight: 1
+      - path: Armature/Hips
+        weight: 1
+      - path: Armature/Hips/Spine
+        weight: 1
+      - path: Armature/Hips/Spine/Chest
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Neck
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Neck/Head
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_L/Upper_Arm_L/Lower_Arm_L/Hand_L/Hand_Hold_L
+        weight: 0
+      - path: Armature/Hips/Spine/Chest/Shoulder_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Bone
+        weight: 0
+      - path: Armature/Hips/Spine/Chest/Shoulder_R/Upper_Arm_R/Lower_Arm_R/Hand_R/Hand_Hold_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L/Lower_Leg_L/Foot_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_L/Lower_Leg_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R/Lower_Leg_R/Foot_R
+        weight: 1
+      - path: Armature/Hips/Upper_Leg_R/Lower_Leg_R/Foot_R/Toes_R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 1
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human:
+    - boneName: Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Upper_Leg_L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Upper_Leg_R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Lower_Leg_L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Lower_Leg_R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot_L
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot_R
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Shoulder_L
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Shoulder_R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Upper_Arm_L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Upper_Arm_R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Lower_Arm_L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Lower_Arm_R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hand_L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hand_R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Toes_L
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Toes_R
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Thumb01_L
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Thumb02_L
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Fingers01_L
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Fingers02_L
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Thumb01_R
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Thumb02_R
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Fingers01_R
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Fingers02_R
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hand_Hold_R
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chest
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Player weight(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: Player weight(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hips
+      parentName: Armature
+      position: {x: -0.00004449673, y: 0.053711116, z: 0.8748821}
+      rotation: {x: 0.5342425, y: 0.5294458, z: -0.4674188, w: 0.4645339}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: Spine
+      parentName: Hips
+      position: {x: -0.17003356, y: 0.000000014668331, z: 0.000000005515176}
+      rotation: {x: -0.0034005446, y: -0.08311244, z: -0.0007111832, w: 0.9965341}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+    - name: Chest
+      parentName: Spine
+      position: {x: -0.2267209, y: 0.000000015861588, z: 0.00000000908949}
+      rotation: {x: 0.03419414, y: -0.036063306, z: -0.0022792367, w: 0.9987617}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: Neck
+      parentName: Chest
+      position: {x: -0.20983925, y: 0.000000014493708, z: 0.000000011990778}
+      rotation: {x: -0.044753928, y: 0.1893122, z: -0.004185308, w: 0.98088765}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Head
+      parentName: Neck
+      position: {x: -0.07835657, y: 0.000000006926712, z: -0.000000043190084}
+      rotation: {x: -0.00016749914, y: -0.102712974, z: 0.0007716984, w: 0.99471074}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Shoulder_L
+      parentName: Chest
+      position: {x: -0.19316852, y: -0.07930561, z: -0.0024079853}
+      rotation: {x: 0.016367277, y: 0.05618004, z: 0.80724704, w: 0.58730584}
+      scale: {x: 0.9999999, y: 0.9999996, z: 0.99999994}
+    - name: Upper_Arm_L
+      parentName: Shoulder_L
+      position: {x: -0.13892385, y: -0.00000023259781, z: 0.000000004190952}
+      rotation: {x: 0.027147695, y: -0.02251701, z: -0.1334091, w: 0.9904333}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: Lower_Arm_L
+      parentName: Upper_Arm_L
+      position: {x: -0.24690068, y: 0.000000030035153, z: 0.000000010477379}
+      rotation: {x: -0.023337808, y: 0.027190827, z: 0.0066947113, w: 0.99933535}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Hand_L
+      parentName: Lower_Arm_L
+      position: {x: -0.25103346, y: 0.000000013853423, z: 0.000000003143214}
+      rotation: {x: 0.021693477, y: -0.07377017, z: -0.08666385, w: 0.9932657}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Fingers01_L
+      parentName: Hand_L
+      position: {x: -0.08712362, y: 0.000000018975697, z: -0.000000004889444}
+      rotation: {x: -0.12686405, y: 0.0520358, z: 0.13336295, w: 0.98153555}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Fingers02_L
+      parentName: Fingers01_L
+      position: {x: -0.058930174, y: 0.00000006472692, z: 0.00000000372529}
+      rotation: {x: -0.030910367, y: 0.062125377, z: 0.066923134, w: 0.9953423}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Thumb01_L
+      parentName: Hand_L
+      position: {x: -0.031059898, y: -0.015441466, z: 0.028222287}
+      rotation: {x: -0.16075884, y: 0.3589465, z: 0.14987245, w: 0.90711206}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Thumb02_L
+      parentName: Thumb01_L
+      position: {x: -0.05333959, y: 0.00000003875175, z: -0.000000038882717}
+      rotation: {x: 0.00064916327, y: -0.11737984, z: -0.0013113553, w: 0.99308604}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hand_Hold_L
+      parentName: Hand_L
+      position: {x: -0.08712362, y: 0.000000018975697, z: -0.000000004889444}
+      rotation: {x: 0.33000833, y: 0.55953425, z: 0.62149847, w: 0.43789905}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Shoulder_R
+      parentName: Chest
+      position: {x: -0.19316858, y: 0.07930565, z: -0.0024080034}
+      rotation: {x: 0.07044205, y: -0.07340107, z: 0.80342203, w: -0.58665437}
+      scale: {x: 1, y: 0.9999994, z: 0.9999999}
+    - name: Upper_Arm_R
+      parentName: Shoulder_R
+      position: {x: -0.13892384, y: -0.000000019557774, z: 0.000000007450581}
+      rotation: {x: 0.16009794, y: -0.0031970288, z: 0.14277387, w: 0.976716}
+      scale: {x: 1.0000001, y: 0.9999999, z: 1}
+    - name: Lower_Arm_R
+      parentName: Upper_Arm_R
+      position: {x: -0.24690072, y: 0.000000033527613, z: 0}
+      rotation: {x: 0.11082227, y: 0.005523151, z: 0.012073751, w: 0.9937515}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hand_R
+      parentName: Lower_Arm_R
+      position: {x: -0.2510336, y: 0.000000037252903, z: -0.00000008009374}
+      rotation: {x: -0.120744474, y: 0.39832813, z: 0.22620675, w: 0.88067365}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Fingers01_R
+      parentName: Hand_R
+      position: {x: -0.08712378, y: 0.000000014901161, z: -0.000000009313226}
+      rotation: {x: -0.034666404, y: -0.3000948, z: -0.31449673, w: 0.89990735}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: Fingers02_R
+      parentName: Fingers01_R
+      position: {x: -0.058930233, y: -0.000000029802322, z: -0.000000084750354}
+      rotation: {x: 0.030910369, y: 0.06212536, z: -0.066923015, w: 0.9953423}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Thumb01_R
+      parentName: Hand_R
+      position: {x: -0.031060034, y: 0.015441515, z: 0.028222332}
+      rotation: {x: 0.06297609, y: 0.086850114, z: -0.2926942, w: 0.9501691}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Thumb02_R
+      parentName: Thumb01_R
+      position: {x: -0.053339455, y: 0.000000020489097, z: 0.000000023283064}
+      rotation: {x: -0.0037776665, y: -0.14246117, z: 0.028397257, w: 0.9893858}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Bone
+      parentName: Hand_R
+      position: {x: -0.08712378, y: 0.000000014901161, z: -0.000000009313226}
+      rotation: {x: 0.871696, y: -0.40269798, z: -0.014928627, w: -0.27885062}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: Hand_Hold_R
+      parentName: Hand_R
+      position: {x: -0.08712378, y: 0.000000014901161, z: -0.000000009313226}
+      rotation: {x: 0.33000833, y: -0.55953425, z: 0.6214984, w: -0.43789914}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1}
+    - name: Upper_Leg_L
+      parentName: Hips
+      position: {x: -0.053054355, y: -0.087688744, z: -0.022884844}
+      rotation: {x: -0.13485639, y: -0.008137973, z: 0.98990864, w: 0.04275964}
+      scale: {x: 0.9999996, y: 0.99999475, z: 0.9999729}
+    - name: Lower_Leg_L
+      parentName: Upper_Leg_L
+      position: {x: -0.41800836, y: 0.00000003533205, z: -0.000000013154931}
+      rotation: {x: -0.00005098672, y: -0.1031346, z: -0.0029317879, w: 0.9946631}
+      scale: {x: 0.9999998, y: 0.9999997, z: 0.9999984}
+    - name: Foot_L
+      parentName: Lower_Leg_L
+      position: {x: -0.44937357, y: 0.00000003830064, z: 0.000000002793968}
+      rotation: {x: 0.07566596, y: 0.49475384, z: -0.1276426, w: 0.8562714}
+      scale: {x: 0.9999942, y: 0.999992, z: 1.0000029}
+    - name: Toes_L
+      parentName: Foot_L
+      position: {x: -0.119884685, y: 0.000000014787155, z: -0.000000002328306}
+      rotation: {x: 0.5104717, y: 0.1486787, z: -0.22532302, w: 0.8164208}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Upper_Leg_R
+      parentName: Hips
+      position: {x: -0.053054284, y: 0.08768878, z: -0.0228848}
+      rotation: {x: -0.14775379, y: -0.009062971, z: 0.98893267, w: -0.009945454}
+      scale: {x: 0.9999997, y: 1.0000005, z: 1.0000063}
+    - name: Lower_Leg_R
+      parentName: Upper_Leg_R
+      position: {x: -0.41800827, y: 0.000000039591896, z: -0.000000004209141}
+      rotation: {x: 0.000050758088, y: -0.13110177, z: 0.003726821, w: 0.9913619}
+      scale: {x: 0.9999997, y: 0.9999998, z: 1.0000002}
+    - name: Foot_R
+      parentName: Lower_Leg_R
+      position: {x: -0.44937333, y: 0.000000046449713, z: 0.000000009546056}
+      rotation: {x: -0.064342506, y: 0.50083804, z: 0.16637684, w: 0.8469593}
+      scale: {x: 1.0000013, y: 1.0000014, z: 0.9999994}
+    - name: Toes_R
+      parentName: Foot_R
+      position: {x: -0.11988404, y: 0.000000001040011, z: 0.000000006519258}
+      rotation: {x: -0.5104708, y: 0.14867981, z: 0.22532418, w: 0.81642085}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Cube
+      parentName: Player weight(Clone)
+      position: {x: -0, y: 0, z: -0.0033217564}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cube_001
+      parentName: Player weight(Clone)
+      position: {x: 0.31931472, y: -0.0715014, z: 0.8383881}
+      rotation: {x: 0.45361656, y: -0.51022243, z: 0.62655485, w: 0.37594435}
+      scale: {x: 0.16423424, y: 0.1642342, z: 0.16423427}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
