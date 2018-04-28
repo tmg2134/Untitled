@@ -1010,16 +1010,22 @@ MonoBehaviour:
   dodgeSpeed: 9
   speedOnSwing: 0.4
   enemyLockOnMaxDist: 50
-  swing_timer: 40
-  stab_timer: 50
+  turnSmoothTime: 0.02
+  speedSmoothTime: 0.1
+  swing_timer: 120
+  stab_timer: 120
   swing2_timer: 80
+  swipe_timer: 90
+  swipe2_timer: 90
   dodge_timer: 25
   invincibility_timer: 20
+  comboTimer: 0.2
   upKey: w
   downKey: s
   leftKey: a
   rightKey: d
   swingKey: mouse 0
+  swipeKey: q
   lockOn: r
   lockOff: f
   playerHitPoints: 20
@@ -1032,8 +1038,6 @@ MonoBehaviour:
   healthSlider: {fileID: 296975299}
   staminaSlider: {fileID: 1181201178}
   lockedCamera: 0
-  turnSmoothTime: 0.02
-  speedSmoothTime: 0.1
 --- !u!143 &468713763
 CharacterController:
   m_ObjectHideFlags: 0

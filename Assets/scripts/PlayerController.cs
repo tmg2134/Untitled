@@ -6,6 +6,7 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour {
 
+  // Movement parameters
   public float walkSpeed = 2;
   public float runSpeed = 6;
   public float gravity = -12;
@@ -13,19 +14,32 @@ public class PlayerController : MonoBehaviour {
   public float dodgeSpeed = 25;
   public float speedOnSwing = .4f;
   public float enemyLockOnMaxDist = 50f;
+  public float turnSmoothTime = 0.08f;
+  public float speedSmoothTime = 0.1f;
 
   // frames
   public float swing_timer = 40;
   public float stab_timer  = 50;
   public float swing2_timer = 80;
+  public float swipe_timer = 50;
+  public float swipe2_timer = 60;
   public float dodge_timer = 12;
   public float invincibility_timer = 20;
 
+  public float comboTimer = .2f;
+
+  int swing_count = 0;
+  float swing_frames_left = 0;
+  float dodge_frames_left = 0;
+  float invincibility_frames_left = 0;
+
+  // controls
   public string upKey = "w";
   public string downKey = "s";
   public string leftKey = "a";
   public string rightKey = "d";
   public string swingKey = "mouse 0";
+  public string swipeKey = "q";
   public string lockOn = "r";
   public string lockOff = "f";
 
@@ -52,9 +66,6 @@ public class PlayerController : MonoBehaviour {
 
   int refreshRate;
 
-  public float turnSmoothTime = 0.08f;
-  public float speedSmoothTime = 0.1f;
-
   bool gotHit = false;
   int enemyDamage = 0;
   
@@ -63,15 +74,16 @@ public class PlayerController : MonoBehaviour {
   float currentSpeed;
   float checkSpeed;
   float velocityY;
+
+  // Animations states
   // string swing_2hand = "Swing_2Hand";
   bool swing_test = false;
   bool stab_test = false;
   bool swing2_test = false;
+  bool swipe_test = false;
+  bool swipe2_test = false;
   bool sliding = false;
-  int swing_count = 0;
-  float swing_frames_left = 0;
-  float dodge_frames_left = 0;
-  float invincibility_frames_left = 0;
+
 
   GameObject[] nearbyEnemies = null;
   GameObject targetEnemy = null;
@@ -144,6 +156,20 @@ public class PlayerController : MonoBehaviour {
         weaponCollider.increaseSwingNum();
         useStamina(swing_StaminaUsage, swing2_timer);
       }
+    } else if (Input.GetKeyDown(swipeKey) && stamina > 0){
+      if (swing_count == 0){
+        swipe_test = true;
+        swing_count += 1;
+        swing_frames_left = swipe_timer;
+        weaponCollider.increaseSwingNum();
+        useStamina(swing_StaminaUsage, swipe_timer);
+      } else if(swing_count == 1 && swing_frames_left <= (swipe_timer * comboTimer)){
+        swipe2_test = true;
+        swing_count += 1;
+        swing_frames_left = swipe2_timer;
+        weaponCollider.increaseSwingNum();
+        useStamina(swing_StaminaUsage, swipe_timer);
+      }
     } else {
       if (swing_frames_left <= 0){
         // if (swing_count == 0){
@@ -153,6 +179,8 @@ public class PlayerController : MonoBehaviour {
           swing_test = false;
           stab_test =  false;
           swing2_test = false;
+          swipe_test = false;
+          swipe2_test = false;
           swing_count = 0;
         // }
       }
@@ -306,6 +334,8 @@ public class PlayerController : MonoBehaviour {
     playerAnimator.SetBool("stab_test", stab_test);
     playerAnimator.SetBool("swing2_test", swing2_test);
     playerAnimator.SetBool("sliding", sliding);
+    playerAnimator.SetBool("swipe_test", swipe_test);
+    playerAnimator.SetBool("swipe2_test", swipe2_test);
 
     // Invincibility frames
     invincibility_frames_left -= 1;
