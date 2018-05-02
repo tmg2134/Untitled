@@ -46,8 +46,6 @@ public class MapGenerator : MonoBehaviour {
 
   public GameObject theDuck;
 
-  private MeshData myMap;
-
   // Threading stuff
   Queue<MapThreadInfo<MapData>> mapDataThreadInfoQueue = new Queue<MapThreadInfo<MapData>>();
   Queue<MapThreadInfo<MeshData>> meshDataThreadInfoQueue = new Queue<MapThreadInfo<MeshData>>();
@@ -56,8 +54,8 @@ public class MapGenerator : MonoBehaviour {
   public void Start(){
     MapData mapData = GenerateMapData();
     MapDisplay display = FindObjectOfType<MapDisplay>();
-    myMap = MeshGenerator.GenerateTerrainMesh(mapData.heightMap);
-    
+    MeshData myMap = MeshGenerator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve);
+    display.DrawMesh(myMap, TextureGenerator.TextureFromColorMap (mapData.colorMap, mapHeight, mapWidth));
 
       //////////////////////////////////// TODO put this somewhere else
       // test
@@ -71,10 +69,6 @@ public class MapGenerator : MonoBehaviour {
       ///////////////////////////////////
       poissonDiscSampler.placeObjects(seed, minObjects, maxObjects, minDistance, maxDistance, theDuck, meshVerts, attempts);
 
-      //  Display the map
-      
-      display.DrawMesh(myMap, TextureGenerator.TextureFromColorMap (mapData.colorMap, mapHeight, mapWidth));
-      myMap.raiseVerts(meshHeightMultiplier, meshHeightCurve, mapHeight);
   }
 
 
@@ -87,19 +81,9 @@ public class MapGenerator : MonoBehaviour {
     } else if (drawMode == DrawMode.ColorMap) {
       display.DrawTexture (TextureGenerator.TextureFromColorMap (mapData.colorMap, mapHeight, mapWidth));
     } else if (drawMode == DrawMode.Mesh) {
-      myMap = MeshGenerator.GenerateTerrainMesh(mapData.heightMap);
-      // myMap.raiseVerts(meshHeightMultiplier, meshHeightCurve);
+      MeshData myMap = MeshGenerator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve);
       display.DrawMesh(myMap, TextureGenerator.TextureFromColorMap (mapData.colorMap, mapHeight, mapWidth));
     }
-
-  }
-
-  public void raiseRoofInEditor(){
-    myMap.raiseVerts(meshHeightMultiplier, meshHeightCurve, mapHeight);
-  }
-
-  public void updateMapInEditor(){
-
   }
 
   public void RequestMapData(Action<MapData> callback) {
@@ -126,7 +110,7 @@ public class MapGenerator : MonoBehaviour {
   }
 
   void MeshDataThread(MapData mapData, Action<MeshData> callback) {
-    MeshData meshData = MeshGenerator.GenerateTerrainMesh (mapData.heightMap); // Add level of detail here
+    MeshData meshData = MeshGenerator.GenerateTerrainMesh (mapData.heightMap, meshHeightMultiplier, meshHeightCurve); // Add level of detail here
     lock (meshDataThreadInfoQueue) {
       meshDataThreadInfoQueue.Enqueue (new MapThreadInfo<MeshData> (callback, meshData));
     }

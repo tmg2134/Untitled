@@ -418,6 +418,10 @@ public class PlayerController : MonoBehaviour {
     // Maybe create array of swings. Loop through that array
     // TODO Refact
     // should the weapon collider class access player, or should player access weapon collider?
+    // TODO
+    ////// Amount of damage increases when more swing frames pass
+    /////// This is so the player can immediately activate an attack, but at the cost of doing less damage with it.
+    /////// Subsequent attacks in the combo will also get a small reduction if they continue to attack
 
     if (Input.GetKeyDown(swingKey) && stamina > 0){
       if (swing_count == 0){
@@ -448,7 +452,8 @@ public class PlayerController : MonoBehaviour {
         swing_frames_left = swipe_timer;
         weaponCollider.increaseSwingNum();
         useStamina(swing_StaminaUsage, swipe_timer);
-      } else if(swing_count == 1 && swing_frames_left <= (swipe_timer * comboTimer)){
+        //  && swing_frames_left <= (swipe_timer * comboTimer)
+      } else if(swing_count == 1){
         swipe2_test = true;
         swing_count += 1;
         swing_frames_left = swipe2_timer;
