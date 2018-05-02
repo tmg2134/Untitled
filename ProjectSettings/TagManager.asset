@@ -10,6 +10,7 @@ TagManager:
   - right_hand_weapon
   - left_hand_weapon
   - weapon
+  - duck
   layers:
   - Default
   - TransparentFX

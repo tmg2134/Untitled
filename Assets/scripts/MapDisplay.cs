@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapDisplay : MonoBehaviour {
-
-
-
+  
 	public Renderer textureRenderer;
   public MeshFilter meshFilter;
   public MeshRenderer meshRenderer;
@@ -39,6 +37,5 @@ public class MapDisplay : MonoBehaviour {
     meshRenderer.sharedMaterial.mainTexture = texture;
     meshCollider.sharedMesh = null;
     meshCollider.sharedMesh = meshFilter.sharedMesh;
-
   }
 }

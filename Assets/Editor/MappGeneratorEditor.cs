@@ -14,10 +14,13 @@ public class MappGeneratorEditor : Editor {
       }
     }
 
-
-
     if(GUILayout.Button("Generate")){
-      mapGen.DrawMapInEditor ();
+      mapGen.DrawMapInEditor();
     }
+
+    if(GUILayout.Button("Raise the roof")){
+      mapGen.raiseRoofInEditor();
+    }
+
   }
 }

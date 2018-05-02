@@ -36,10 +36,6 @@ public static class Noise {
 	public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, int octaves, float persistence, float lacunarity, Vector3 octaveOffsets, int thePerlinType){
 		float [,] noiseMap = new float[mapWidth, mapHeight];
 
-    //Create random seed for different maps each time
-
-
-
     if (scale <= 0){
       scale = 0.0001f;
     }
@@ -113,6 +109,7 @@ public static class Noise {
     float frequency = 1.95f;
     float noiseHeight = 0;
 
+    // random maps using a seed to be able to recreate them
     System.Random prng = new System.Random(seed);
     Vector3[] offsets = new Vector3[octaves];
 
