@@ -21,7 +21,7 @@ public class MeshGenerator {
     for (int i=0; i < height; i++){
       for (int j=0; j < width; j++){
 
-        meshData.vertices [vertexIndex] = new Vector3(topLeftX + j, heightCurve.Evaluate(heightMap[i,j]) * heightMultiplier, topLeftZ - i);
+        meshData.vertices[vertexIndex] = new Vector3(topLeftX + j, heightCurve.Evaluate(heightMap[i,j]) * heightMultiplier, topLeftZ - i);
         meshData.uvs[vertexIndex] = new Vector2(i/(float)height,j/(float)width);
 
         if (i < width -1 && j < height - 1){
@@ -69,5 +69,9 @@ public class MeshData{
     mesh.uv = uvs;
     mesh.RecalculateNormals();
     return mesh;
+  }
+
+  public Vector3[] getVertices(){
+    return vertices;
   }
 }

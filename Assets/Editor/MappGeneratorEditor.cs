@@ -14,10 +14,8 @@ public class MappGeneratorEditor : Editor {
       }
     }
 
-
-
     if(GUILayout.Button("Generate")){
-      mapGen.DrawMapInEditor ();
+      mapGen.DrawMapInEditor();
     }
   }
 }

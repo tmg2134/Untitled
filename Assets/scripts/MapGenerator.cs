@@ -44,16 +44,33 @@ public class MapGenerator : MonoBehaviour {
 
   public bool autoUpdate;
 
+  public GameObject theDuck;
+
   // Threading stuff
   Queue<MapThreadInfo<MapData>> mapDataThreadInfoQueue = new Queue<MapThreadInfo<MapData>>();
   Queue<MapThreadInfo<MeshData>> meshDataThreadInfoQueue = new Queue<MapThreadInfo<MeshData>>();
 
 
   public void Start(){
-    MapData mapData = GenerateMapData ();
-    MapDisplay display = FindObjectOfType<MapDisplay> ();
-    display.DrawMesh (MeshGenerator.GenerateTerrainMesh (mapData.heightMap, meshHeightMultiplier, meshHeightCurve), TextureGenerator.TextureFromColorMap (mapData.colorMap, mapHeight, mapWidth));
+    MapData mapData = GenerateMapData();
+    MapDisplay display = FindObjectOfType<MapDisplay>();
+    MeshData myMap = MeshGenerator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve);
+    display.DrawMesh(myMap, TextureGenerator.TextureFromColorMap (mapData.colorMap, mapHeight, mapWidth));
+
+      //////////////////////////////////// TODO put this somewhere else
+      // test
+      int minObjects = 25;
+      int maxObjects = 26;
+      int minDistance = 10;
+      int maxDistance = 100;
+      Vector3[] meshVerts = myMap.getVertices();
+      int attempts = 30;
+      //
+      ///////////////////////////////////
+      poissonDiscSampler.placeObjects(seed, minObjects, maxObjects, minDistance, maxDistance, theDuck, meshVerts, attempts);
+
   }
+
 
   public void DrawMapInEditor() {
     MapData mapData = GenerateMapData ();
@@ -64,7 +81,8 @@ public class MapGenerator : MonoBehaviour {
     } else if (drawMode == DrawMode.ColorMap) {
       display.DrawTexture (TextureGenerator.TextureFromColorMap (mapData.colorMap, mapHeight, mapWidth));
     } else if (drawMode == DrawMode.Mesh) {
-      display.DrawMesh (MeshGenerator.GenerateTerrainMesh (mapData.heightMap, meshHeightMultiplier, meshHeightCurve), TextureGenerator.TextureFromColorMap (mapData.colorMap, mapHeight, mapWidth));
+      MeshData myMap = MeshGenerator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve);
+      display.DrawMesh(myMap, TextureGenerator.TextureFromColorMap (mapData.colorMap, mapHeight, mapWidth));
     }
   }
 
@@ -113,9 +131,6 @@ public class MapGenerator : MonoBehaviour {
       }
     }
   }
-
-
-
 
 	public MapData GenerateMapData() {
     int thePerlinType;
@@ -196,4 +211,5 @@ public struct MapData {
     this.heightMap = heightMap;
     this.colorMap = colorMap;
   }
+
 }

@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
   public float swipe2_timer = 60;
   public float dodge_timer = 12;
   public float invincibility_timer = 20;
-
+  public float duckVel = .2f;
   public float comboTimer = .2f;
 
   int swing_count = 0;
@@ -127,64 +127,7 @@ public class PlayerController : MonoBehaviour {
     input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     inputDir = input.normalized;
 
-    // Swing and shit
-    // TODO
-    // This probbaly needs some work for different swing sets.
-    // Maybe create array of swings. Loop through that array
-    // TODO Refact
-    // should the weapon collider class access player, or should player access weapon collider?
-
-    if (Input.GetKeyDown(swingKey) && stamina > 0){
-      if (swing_count == 0){
-        swing_test = true;
-        swing_count += 1;
-        swing_frames_left = swing_timer;
-        weaponCollider.increaseSwingNum();
-        useStamina(swing_StaminaUsage, swing_timer);
-      } else if(swing_count == 1) {
-        stab_test = true;
-        swing_frames_left = stab_timer;
-        swing_count += 1;
-        weaponCollider.increaseSwingNum();
-        useStamina(swing_StaminaUsage, stab_timer);
-        // swing1_frames_left = 0;
-      } else if(swing_count == 2) {
-        swing2_test = true;
-        swing_frames_left = swing2_timer;
-        swing_count++;
-        // Maybe put a delay on this one?
-        weaponCollider.increaseSwingNum();
-        useStamina(swing_StaminaUsage, swing2_timer);
-      }
-    } else if (Input.GetKeyDown(swipeKey) && stamina > 0){
-      if (swing_count == 0){
-        swipe_test = true;
-        swing_count += 1;
-        swing_frames_left = swipe_timer;
-        weaponCollider.increaseSwingNum();
-        useStamina(swing_StaminaUsage, swipe_timer);
-      } else if(swing_count == 1 && swing_frames_left <= (swipe_timer * comboTimer)){
-        swipe2_test = true;
-        swing_count += 1;
-        swing_frames_left = swipe2_timer;
-        weaponCollider.increaseSwingNum();
-        useStamina(swing_StaminaUsage, swipe_timer);
-      }
-    } else {
-      if (swing_frames_left <= 0){
-        // if (swing_count == 0){
-        //   swing_test = false;
-        //   swing_count = 0;
-        // } else {
-          swing_test = false;
-          stab_test =  false;
-          swing2_test = false;
-          swipe_test = false;
-          swipe2_test = false;
-          swing_count = 0;
-        // }
-      }
-    }
+    playerCombat();
 
     // Get list of enemies, lock on to one
     // TODO
@@ -359,6 +302,10 @@ public class PlayerController : MonoBehaviour {
         // enemyDamage = enemy_controller.attackDamage();
         // enemy_controller.unTriggerColliders();
       }
+    } else if(other.gameObject.tag == "duck"){ // Just for fun. Fix it.
+        Vector3 duckVelocity = other.gameObject.transform.forward * duckVel;
+        other.gameObject.transform.rotation = this.transform.rotation;
+        other.gameObject.GetComponent<CharacterController>().Move(duckVelocity * Time.deltaTime);
     }
   }
 
@@ -461,6 +408,75 @@ public class PlayerController : MonoBehaviour {
       stamina_refresh_frames_left -= 1;
     }
     staminaSlider.value = stamina;
+  }
+
+  void playerCombat(){
+
+    // Swing and shit
+    // TODO
+    // This probbaly needs some work for different swing sets.
+    // Maybe create array of swings. Loop through that array
+    // TODO Refact
+    // should the weapon collider class access player, or should player access weapon collider?
+    // TODO
+    ////// Amount of damage increases when more swing frames pass
+    /////// This is so the player can immediately activate an attack, but at the cost of doing less damage with it.
+    ///////  Subsequent attacks in the combo will also get a small reduction if they continue to attack
+
+    if (Input.GetKeyDown(swingKey) && stamina > 0){
+      if (swing_count == 0){
+        swing_test = true;
+        swing_count += 1;
+        swing_frames_left = swing_timer;
+        weaponCollider.increaseSwingNum();
+        useStamina(swing_StaminaUsage, swing_timer);
+      } else if(swing_count == 1) {
+        stab_test = true;
+        swing_frames_left = stab_timer;
+        swing_count += 1;
+        weaponCollider.increaseSwingNum();
+        useStamina(swing_StaminaUsage, stab_timer);
+        // swing1_frames_left = 0;
+      } else if(swing_count == 2) {
+        swing2_test = true;
+        swing_frames_left = swing2_timer;
+        swing_count++;
+        // Maybe put a delay on this one?
+        weaponCollider.increaseSwingNum();
+        useStamina(swing_StaminaUsage, swing2_timer);
+      }
+    } else if (Input.GetKeyDown(swipeKey) && stamina > 0){
+      if (swing_count == 0){
+        swipe_test = true;
+        swing_count += 1;
+        swing_frames_left = swipe_timer;
+        weaponCollider.increaseSwingNum();
+        useStamina(swing_StaminaUsage, swipe_timer);
+        //  && swing_frames_left <= (swipe_timer * comboTimer)
+      } else if(swing_count == 1){
+        swipe2_test = true;
+        swing_count += 1;
+        swing_frames_left = swipe2_timer;
+        weaponCollider.increaseSwingNum();
+        useStamina(swing_StaminaUsage, swipe_timer);
+      }
+    } else {
+      if (swing_frames_left <= 0){
+        // if (swing_count == 0){
+        //   swing_test = false;
+        //   swing_count = 0;
+        // } else {
+          swing_test = false;
+          stab_test =  false;
+          swing2_test = false;
+          swipe_test = false;
+          swipe2_test = false;
+          swing_count = 0;
+        // }
+      }
+    }
+
+
   }
 
 }
