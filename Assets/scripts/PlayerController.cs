@@ -27,6 +27,12 @@ public class PlayerController : MonoBehaviour {
   public float invincibility_timer = 20;
   public float duckVel = .2f;
   public float comboTimer = .2f;
+  public float swing1_prep_frames = 21;
+  public float stab_prep_frames = 31;
+  public float swing3_prep_frames = 20;
+
+  float currentPrepFrames = 0;
+  float totalSwingFrames;
 
   int swing_count = 0;
   float swing_frames_left = 0;
@@ -62,12 +68,12 @@ public class PlayerController : MonoBehaviour {
 
   public bool lockedCamera = false;
 
-  player_Camera theCamera;
+  // player_Camera theCamera;
 
   int refreshRate;
 
-  bool gotHit = false;
-  int enemyDamage = 0;
+  // bool gotHit = false;
+  // int enemyDamage = 0;
   
   float turnSmoothVelocity;
   float speedSmoothVelocity;
@@ -103,7 +109,7 @@ public class PlayerController : MonoBehaviour {
   // Use this for initialization
   void Start() {
     playerAnimator = GetComponent<Animator>();
-    theCamera = GetComponentInChildren<player_Camera>();
+    // theCamera = GetComponentInChildren<player_Camera>();
     cameraT = Camera.main.transform;
     controller =  GetComponent<CharacterController>();
     weaponCollider = GetComponentInChildren<check_sword_Collision>();
@@ -137,6 +143,9 @@ public class PlayerController : MonoBehaviour {
       lockedCamera = true;
       if (nearbyEnemies == null || nearbyEnemies.Length == 0){
         nearbyEnemies = getEnemies();
+        for(int a=0; a<nearbyEnemies.Length;a++){
+          Debug.Log(nearbyEnemies[a]);
+        }
         if (nearbyEnemies.Length == 0){
           lockedCamera = false;
           targetEnemy = null;
@@ -158,6 +167,7 @@ public class PlayerController : MonoBehaviour {
 
     if (Input.GetKeyDown(lockOff)){
       lockedCamera = false;
+      targetEnemy = nearbyEnemies[0];
       // theCamera.unsetRotation();
       // theCamera.unClampYaw();
     }
@@ -211,15 +221,8 @@ public class PlayerController : MonoBehaviour {
     float targetSpeed = ((running)?runSpeed:walkSpeed) * inputDir.magnitude;
     currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
 
-    // Move slower if swinging. No rotations while swinging.
-    if (swing_frames_left > 0){
-      // Debug.Log(swing_frames_left);
-      swing_frames_left -= 1;
-      currentSpeed = 0;
-      Vector3 swingVelocity = transform.forward * speedOnSwing;
-      controller.Move(swingVelocity * Time.deltaTime);
-      // Debug.Log(weaponCollider.enemyCollision());
-    }
+    // Decrement swing_frames every frame, move player if past prep frames
+    checkSwingFrames();
 
     // Dodge. Can't Dodge while swinging. Can make dodge queue up?
 
@@ -335,9 +338,9 @@ public class PlayerController : MonoBehaviour {
   // Get a list of enemies and find closest to player in direction of players rotation. Also at least within targetable bounds 
   //
   // TODO
-  // Would only switch between two closest enemies right now
   // Change to make a sorted list/array of enemies from min to max distance
   // Only put enemies within a certain range into the list
+  // Not sorting by closest to farthest for some reason.
   GameObject[] getEnemies(){
     // Players position
     Vector3 playerPos = transform.position;
@@ -345,7 +348,7 @@ public class PlayerController : MonoBehaviour {
     GameObject[] enemies;
 
     enemies = GameObject.FindGameObjectsWithTag("enemy");
-    enemies.OrderBy(t=>((t.transform.position - playerPos).sqrMagnitude));
+    enemies.OrderBy(t=>((playerPos - t.transform.position).magnitude));
 
     return enemies;
 
@@ -387,6 +390,9 @@ public class PlayerController : MonoBehaviour {
     dodge_timer  = (dodge_timer / 60f) * refreshRate;
     invincibility_timer = (dodge_timer / 60f) * refreshRate;
     stamina_refresh_timer = (stamina_refresh_timer / 60f) * refreshRate;
+    swing1_prep_frames = swing1_prep_frames / 60f * refreshRate;
+    stab_prep_frames = stab_prep_frames / 60f * refreshRate;
+    swing3_prep_frames = swing3_prep_frames / 60f * refreshRate;
   }
 
   void useStamina(float amt, float actionFrames){
@@ -429,12 +435,16 @@ public class PlayerController : MonoBehaviour {
         swing_count += 1;
         swing_frames_left = swing_timer;
         weaponCollider.increaseSwingNum();
+        currentPrepFrames = swing1_prep_frames;
+        totalSwingFrames = swing_timer;
         useStamina(swing_StaminaUsage, swing_timer);
       } else if(swing_count == 1) {
         stab_test = true;
         swing_frames_left = stab_timer;
         swing_count += 1;
         weaponCollider.increaseSwingNum();
+        currentPrepFrames = stab_prep_frames;
+        totalSwingFrames = stab_timer;
         useStamina(swing_StaminaUsage, stab_timer);
         // swing1_frames_left = 0;
       } else if(swing_count == 2) {
@@ -443,6 +453,8 @@ public class PlayerController : MonoBehaviour {
         swing_count++;
         // Maybe put a delay on this one?
         weaponCollider.increaseSwingNum();
+        currentPrepFrames = swing3_prep_frames;
+        totalSwingFrames = swing2_timer;
         useStamina(swing_StaminaUsage, swing2_timer);
       }
     } else if (Input.GetKeyDown(swipeKey) && stamina > 0){
@@ -452,12 +464,16 @@ public class PlayerController : MonoBehaviour {
         swing_frames_left = swipe_timer;
         weaponCollider.increaseSwingNum();
         useStamina(swing_StaminaUsage, swipe_timer);
+        currentPrepFrames = swing1_prep_frames;
+        totalSwingFrames = swipe_timer;
         //  && swing_frames_left <= (swipe_timer * comboTimer)
       } else if(swing_count == 1){
         swipe2_test = true;
         swing_count += 1;
         swing_frames_left = swipe2_timer;
         weaponCollider.increaseSwingNum();
+        currentPrepFrames = swing1_prep_frames;
+        totalSwingFrames = swipe2_timer;
         useStamina(swing_StaminaUsage, swipe_timer);
       }
     } else {
@@ -475,8 +491,22 @@ public class PlayerController : MonoBehaviour {
         // }
       }
     }
+  }
 
-
+  void checkSwingFrames(){
+    if (swing_frames_left > 0){
+      // Debug.Log(swing_frames_left);
+      swing_frames_left -= 1;
+      // Move if swinging. No rotations while swinging.
+      if ( Mathf.FloorToInt(swing_frames_left) <= Mathf.FloorToInt(totalSwingFrames - currentPrepFrames)){
+        // Debug.Log("Move");
+        currentSpeed = 0;
+        Vector3 swingVelocity = transform.forward * speedOnSwing;
+        controller.Move(swingVelocity * Time.deltaTime);
+        // controller.Move(swingVelocity);
+        // Debug.Log(weaponCollider.enemyCollision());
+      }
+    }
   }
 
 }

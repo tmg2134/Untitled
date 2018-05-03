@@ -42,9 +42,13 @@ public class MapGenerator : MonoBehaviour {
 
   public TerrianType[] regions;
 
+  public bool distributeDucks;
+  public bool distributeBears;
+
   public bool autoUpdate;
 
   public GameObject theDuck;
+  public GameObject enemy;
 
   // Threading stuff
   Queue<MapThreadInfo<MapData>> mapDataThreadInfoQueue = new Queue<MapThreadInfo<MapData>>();
@@ -57,17 +61,33 @@ public class MapGenerator : MonoBehaviour {
     MeshData myMap = MeshGenerator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve);
     display.DrawMesh(myMap, TextureGenerator.TextureFromColorMap (mapData.colorMap, mapHeight, mapWidth));
 
+    if(distributeDucks){
       //////////////////////////////////// TODO put this somewhere else
       // test
       int minObjects = 25;
-      int maxObjects = 26;
-      int minDistance = 10;
-      int maxDistance = 100;
-      Vector3[] meshVerts = myMap.getVertices();
+      int maxObjects = 30;
+      int minDistance = 20;
+      int maxDistance = 200;
+      // Vector3[] meshVerts = myMap.getVertices();
       int attempts = 30;
       //
       ///////////////////////////////////
-      poissonDiscSampler.placeObjects(seed, minObjects, maxObjects, minDistance, maxDistance, theDuck, meshVerts, attempts);
+      poissonDiscSampler.placeObjects(seed, minObjects, maxObjects, minDistance, maxDistance, theDuck, myMap.getVertices(), attempts);
+    }
+
+    if (distributeBears){
+      //////////////////////////////////// TODO put this somewhere else
+      // test
+      int minObjects = 5;
+      int maxObjects = 8;
+      int minDistance = 65;
+      int maxDistance = 200;
+      // Vector3[] meshVerts = myMap.getVertices();
+      int attempts = 30;
+      //
+      ///////////////////////////////////
+      poissonDiscSampler.placeObjects(seed, minObjects, maxObjects, minDistance, maxDistance, enemy, myMap.getVertices(), attempts);
+    }
 
   }
 

@@ -19,16 +19,17 @@ public class enemyController : MonoBehaviour {
   // TODO 
   // Lower than 350 attack rate seems to cause issues
   public float attackRate = 350;
-  float framesUntilAttack;
-  float resetLastSwingFrames = 2400;
+  public float framesUntilAttack;
+  // float resetLastSwingFrames = 2400;
   float framesUntilReset;
   public float attackAnimationFrames = 140;
-  float attackAnimationFramesLeft = 0;
+  public float attackAnimationFramesLeft = 0;
   // public float attack_2InactiveFrames = 46;
   // float inactiveFramesLeft;
   public float attack_2ActiveFrames = 22;
   float attack_2ActiveFramesLeft;
   public float leftOverAttackFrames = 15;
+  public float newOriginalFrames = 100;
 
   public float speedOnAttack = .4f;
 
@@ -61,10 +62,9 @@ public class enemyController : MonoBehaviour {
   Animator enemyAnimator;
   CharacterController controller;
 
-
   private bool player_nearby = false;
-  private bool isAttacking = false;
-  bool activeFrames = false;
+  public bool isAttacking = false;
+  public bool activeFrames = false;
 
 	// Use this for initialization
 	void Start () {
@@ -77,17 +77,17 @@ public class enemyController : MonoBehaviour {
     
 
     refreshRate = Screen.currentResolution.refreshRate;
-    hpRegenRate = (hpRegenRate / 60f) * refreshRate;
-    attackRate = (attackRate / 60f) * refreshRate;
-    resetLastSwingFrames = (resetLastSwingFrames / 60f) * refreshRate;
-    attackAnimationFrames = (attackAnimationFrames / 60f) * refreshRate;
+    hpRegenRate = Mathf.Floor((hpRegenRate / 60f) * refreshRate);
+    attackRate = Mathf.Floor((attackRate / 60f) * refreshRate);
+    // resetLastSwingFrames = Mathf.Floor((resetLastSwingFrames / 60f) * refreshRate);
+    attackAnimationFrames = Mathf.Floor((attackAnimationFrames / 60f) * refreshRate);
     // attack_2InactiveFrames = (attack_2InactiveFrames / 60f) * refreshRate;
-    attack_2ActiveFrames = (attack_2ActiveFrames / 60f) * refreshRate;
-    leftOverAttackFrames = (leftOverAttackFrames / 60f) * refreshRate * -1;
+    attack_2ActiveFrames = Mathf.Floor((attack_2ActiveFrames / 60f) * refreshRate);
+    leftOverAttackFrames = Mathf.Floor((leftOverAttackFrames / 60f) * refreshRate * -1);
 
     framesUntilRegen = hpRegenRate;
     framesUntilAttack = attackRate;
-    framesUntilReset = resetLastSwingFrames;
+    // framesUntilReset = resetLastSwingFrames;
 
     maxHitPoints = hitPoints;
 	}
@@ -95,7 +95,22 @@ public class enemyController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+    if(controller.isGrounded == false){
+      Debug.Log("Hello");
+      velocityY += Time.deltaTime * gravity;
+      Vector3 velocity = transform.forward * 1f + Vector3.up * velocityY;
+      controller.Move(velocity * Time.deltaTime);
+    }
+
     if (alive){
+
+      // Fix position
+      if (newOriginalFrames > 0) {
+        newOriginalFrames -= 1;
+      } else if (newOriginalFrames == 0) {
+        originalPosition = this.transform.position;
+        newOriginalFrames -= 1;
+      }
 
       if(Vector3.Distance(player.position, this.transform.position) < interactDistance){
 
@@ -107,23 +122,19 @@ public class enemyController : MonoBehaviour {
         direction.y = 0;
        
         // Check if can attack if this close
-        if (direction.magnitude <= 2.5f){
-          framesUntilAttack -= 1;
+        if (direction.magnitude <= 3.5f){
           attackPlayer();
         }
 
-        // If he enemy can attack, do so. 
-        if (isAttacking && attackAnimationFramesLeft > leftOverAttackFrames){
+        // Decrement attackAnimationFrames; check move if attack is not going through yet
+        if (isAttacking && attackAnimationFramesLeft > 0){
           attackAnimationFramesLeft -= 1;
-          // inactiveFramesLeft -= 1;
           // TODO
           // Still move a little while attacking? Maybe add something to check for this later
           if (attackAnimationFramesLeft > attack_2ActiveFrames){
             Vector3 attackVelocity = transform.forward * speedOnAttack;
             controller.Move(attackVelocity * Time.deltaTime);
           }
-        } else {
-          isAttacking = false;
         }
 
         // Check for active frames.
@@ -133,7 +144,6 @@ public class enemyController : MonoBehaviour {
         if( isAttacking == true && (attackAnimationFramesLeft <= attack_2ActiveFrames) ){
           activeFrames = true;
           triggerColliders();
-          // Debug.Log(attackAnimationFramesLeft);
         } else{
           this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), turnSpeed); //* Time.deltaTime);
           activeFrames = false;
@@ -168,25 +178,20 @@ public class enemyController : MonoBehaviour {
     
     // Ded bear
     } else {
-      // no more chasing/moving
+      // TODO
       // play death animation
       // give potential rewards
-      this.tag = "dead_enemy";
-      
+      // this.tag = "dead_enemy";
+      // Instantiate dead bear
+      // Destroy this bear
+      Destroy(this.gameObject);
     }
-    // Un-comment if problems arise?
-
-    // framesUntilReset -= 1;
-    // if (framesUntilReset <= 0){
-    //   lastSwing = -1;
-    //   framesUntilReset = resetLastSwingFrames;
-    // }
 		
 	}
 
   void Move_To_originial_position(){
     Vector3 direction = originalPosition - this.transform.position;
-    this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), turnSpeed);
+    // this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), turnSpeed);
     velocityY += Time.deltaTime * gravity;
     Vector3 velocity = transform.forward * walkSpeed + Vector3.up * velocityY;
     controller.Move(velocity * Time.deltaTime);
@@ -227,12 +232,12 @@ public class enemyController : MonoBehaviour {
       attackAnimationFramesLeft = attackAnimationFrames;
       // inactiveFramesLeft = attack_2InactiveFrames;
       isAttacking = true;
-    } 
-    //  else if (attackAnimationFramesLeft >= 0){
-    //   isAttacking = true;
-    // } else {
-    //   isAttacking = false;
-    // }
+    } else if (attackAnimationFramesLeft > 0){
+      isAttacking = true;
+    } else {
+      isAttacking = false;
+      framesUntilAttack -= 1;
+    }
   }
 
   public bool checkForActiveFrames(){

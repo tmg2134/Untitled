@@ -7,14 +7,11 @@ using UnityEngine;
 
 /*
 
-Step 2. While the active list is not empty, choose a random index
-from it (say i). Generate up to k points chosen uniformly from the
-spherical annulus between radius r and 2r around xi. For each
-point in turn, check if it is within distance r of existing samples
-(using the background grid to only test nearby samples). If a point
-is adequately far from existing samples, emit it as the next sample
-and add it to the active list. If after k attempts no such point is
-found, instead remove i from the active list.
+TODO
+
+Might need a way to check if an object is already in that position or not
+
+Might need a way to find a more exact spot on mesh 
 
 */
 
@@ -93,7 +90,9 @@ public class poissonDiscSampler : MonoBehaviour {
   private static bool checkDistance(Vector3 thePoint, float minDist, float maxDist, List<Vector3> placedItems){
     float theDist;
     for(int i=0; i < placedItems.Count; i++){
-      theDist = Vector3.Distance(thePoint, placedItems[i]);
+      Vector3 nextPoint = placedItems[i];
+      nextPoint.y = 0;
+      theDist = Vector3.Distance(thePoint, nextPoint);
       if (theDist <= minDist || theDist >= maxDist){
         return false;
       }
@@ -107,7 +106,7 @@ public class poissonDiscSampler : MonoBehaviour {
     for(int i=0; i < placedItems.Count; i++){
       Quaternion rotation = Quaternion.LookRotation(placedItems[i]);
       Vector3 newPos = placedItems[i];
-      newPos.y = newPos.y + 0.5f;
+      newPos.y = newPos.y + 5f;
       Instantiate(objectToPlace, newPos, rotation);
     } 
   }
@@ -126,9 +125,9 @@ public class poissonDiscSampler : MonoBehaviour {
  }
 
   // Check if the point is within the bounds of the given mesh
-  // TODO swap 99.5 for another param
+  // TODO swap 97 for another param
   private static bool checkInBounds(float x, float z, float offsetx, float offsetz){
-    if (x > (-99.5f + offsetx) && x < (99.5 + offsetx) && z > (-99.5 + offsetz) && z < (99.5 + offsetz)){
+    if (x > (-97 + offsetx) && x < (97 + offsetx) && z > (-97 + offsetz) && z < (97 + offsetz)){
       return true;
     } else {
       return false;
