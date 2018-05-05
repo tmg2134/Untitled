@@ -96,7 +96,6 @@ public class enemyController : MonoBehaviour {
 	void Update () {
 
     if(controller.isGrounded == false){
-      Debug.Log("Hello");
       velocityY += Time.deltaTime * gravity;
       Vector3 velocity = transform.forward * 1f + Vector3.up * velocityY;
       controller.Move(velocity * Time.deltaTime);

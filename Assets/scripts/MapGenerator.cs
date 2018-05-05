@@ -64,15 +64,15 @@ public class MapGenerator : MonoBehaviour {
     if(distributeDucks){
       //////////////////////////////////// TODO put this somewhere else
       // test
-      int minObjects = 25;
-      int maxObjects = 30;
+      int minObjects = 100;
+      int maxObjects = 150;
       int minDistance = 20;
-      int maxDistance = 200;
+      // int maxDistance = mapHeight/2;
       // Vector3[] meshVerts = myMap.getVertices();
       int attempts = 30;
       //
       ///////////////////////////////////
-      poissonDiscSampler.placeObjects(seed, minObjects, maxObjects, minDistance, maxDistance, theDuck, myMap.getVertices(), attempts);
+      poissonDiscSampler.placeObjects(seed, minObjects, maxObjects, minDistance, theDuck, myMap.getVertices(), attempts, mapHeight, mapWidth);
     }
 
     if (distributeBears){
@@ -80,13 +80,13 @@ public class MapGenerator : MonoBehaviour {
       // test
       int minObjects = 5;
       int maxObjects = 8;
-      int minDistance = 65;
-      int maxDistance = 200;
+      int minDistance = 30;
+      // int maxDistance = mapHeight/2;
       // Vector3[] meshVerts = myMap.getVertices();
       int attempts = 30;
       //
       ///////////////////////////////////
-      poissonDiscSampler.placeObjects(seed, minObjects, maxObjects, minDistance, maxDistance, enemy, myMap.getVertices(), attempts);
+      poissonDiscSampler.placeObjects(seed, minObjects, maxObjects, minDistance, enemy, myMap.getVertices(), attempts, mapHeight, mapWidth);
     }
 
   }

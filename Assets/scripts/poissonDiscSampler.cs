@@ -20,7 +20,7 @@ Might need a way to find a more exact spot on mesh
 public class poissonDiscSampler : MonoBehaviour {
 
 	// Use this for initialization
-	public static void placeObjects(int seed, int minObjects, int maxObjects, int minDistance, int maxDistance, GameObject thisObject, Vector3[] meshVerts, int attempts) {
+	public static void placeObjects(int seed, int minObjects, int maxObjects, int minDistance, GameObject thisObject, Vector3[] meshVerts, int attempts, int mapHeight, int mapWidth) {
 		
     // Create tables for chance of monsters, loot, rewards
 
@@ -29,7 +29,8 @@ public class poissonDiscSampler : MonoBehaviour {
     int chooseItem;
     float randAngle;
     float randRadius;
-    bool foundPoint = false;  
+    bool foundPoint = false;
+    int maxDistance = minDistance * 2;
 
     // Create seed for recreation
     System.Random prng = new System.Random(seed);
@@ -68,7 +69,7 @@ public class poissonDiscSampler : MonoBehaviour {
         Vector3 choosePointOnMesh = createPointFromCenter(startPoint, randRadius, randAngle);
 
         // TODO add offsetx, offsetz
-        if(checkDistance(choosePointOnMesh, minDistance, maxDistance, placedItems) && (checkInBounds(choosePointOnMesh.x, choosePointOnMesh.z,0,0))){
+        if(checkDistance(choosePointOnMesh, minDistance, maxDistance, placedItems) && (checkInBounds(choosePointOnMesh.x, choosePointOnMesh.z,5,5, mapHeight, mapWidth))){
           activeList.Add(choosePointOnMesh);
           placedItems.Add(choosePointOnMesh);
           foundPoint = true;
@@ -92,8 +93,9 @@ public class poissonDiscSampler : MonoBehaviour {
     for(int i=0; i < placedItems.Count; i++){
       Vector3 nextPoint = placedItems[i];
       nextPoint.y = 0;
-      theDist = Vector3.Distance(thePoint, nextPoint);
-      if (theDist <= minDist || theDist >= maxDist){
+      // theDist = Vector3.Distance(thePoint, nextPoint);
+      theDist = (nextPoint - thePoint).magnitude;
+      if (theDist <= minDist){
         return false;
       }
     }
@@ -106,7 +108,7 @@ public class poissonDiscSampler : MonoBehaviour {
     for(int i=0; i < placedItems.Count; i++){
       Quaternion rotation = Quaternion.LookRotation(placedItems[i]);
       Vector3 newPos = placedItems[i];
-      newPos.y = newPos.y + 5f;
+      newPos.y = 14f;
       Instantiate(objectToPlace, newPos, rotation);
     } 
   }
@@ -114,6 +116,8 @@ public class poissonDiscSampler : MonoBehaviour {
 
   // Vector3 randomPoint = center + Random.insideUnitSphere * range;
   // .insideUnitySphere Returns a random point inside a sphere with radius 1
+      // Vector3 pos = center + Random.insideUnitSphere * radius/2;
+     // pos.y = center.y;
 
   // Return a Vector3 within an a radius from a starting point. Y pos will not change
   private static Vector3 createPointFromCenter(Vector3 center, float radius, float ang){
@@ -125,9 +129,8 @@ public class poissonDiscSampler : MonoBehaviour {
  }
 
   // Check if the point is within the bounds of the given mesh
-  // TODO swap 97 for another param
-  private static bool checkInBounds(float x, float z, float offsetx, float offsetz){
-    if (x > (-97 + offsetx) && x < (97 + offsetx) && z > (-97 + offsetz) && z < (97 + offsetz)){
+  private static bool checkInBounds(float x, float z, float offsetx, float offsetz, int mapHeight, int mapWidth){
+    if (x >= ((mapWidth/2 * -1) + offsetx) && x <= ((mapHeight/2 * 1) - offsetx) && z >= ((mapWidth/2 * -1) + offsetz) && z <= ((mapWidth/2 * 1) - offsetz)){
       return true;
     } else {
       return false;

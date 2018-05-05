@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
@@ -90,8 +91,10 @@ public class PlayerController : MonoBehaviour {
   bool swipe2_test = false;
   bool sliding = false;
 
+  int currentIndex;
 
-  GameObject[] nearbyEnemies = null;
+
+  List<GameObject> nearbyEnemies = null;
   GameObject targetEnemy = null;
 
   GameObject equipedItem;
@@ -140,23 +143,22 @@ public class PlayerController : MonoBehaviour {
     // This will probably need some work, especially when dealing with moving around
     // Reset array after a certain number of frames have passed?
     if (Input.GetKeyDown(lockOn)){
-      lockedCamera = true;
-      if (nearbyEnemies == null || nearbyEnemies.Length == 0){
+      if (nearbyEnemies == null || nearbyEnemies.Count == 0 || lockedCamera == false){
         nearbyEnemies = getEnemies();
-        for(int a=0; a<nearbyEnemies.Length;a++){
-          Debug.Log(nearbyEnemies[a]);
-        }
-        if (nearbyEnemies.Length == 0){
+        lockedCamera = true;
+        if (nearbyEnemies.Count == 0){
           lockedCamera = false;
           targetEnemy = null;
         } else {
-          targetEnemy = nearbyEnemies[0];
+          currentIndex = 0;
+          targetEnemy = nearbyEnemies[currentIndex];
         }
-      } else if(Array.IndexOf(nearbyEnemies,targetEnemy) == (nearbyEnemies.Length - 1)) {
-        targetEnemy = nearbyEnemies[0];
       } else {
-        int currentIndex = Array.IndexOf(nearbyEnemies,targetEnemy);
-        targetEnemy = nearbyEnemies[currentIndex + 1];
+        currentIndex += 1;
+        if (currentIndex >= nearbyEnemies.Count){ 
+          currentIndex = 0;
+        }
+        targetEnemy = nearbyEnemies[currentIndex];
       }
       if (lockedCamera){
         // Debug.Log(targetEnemy);
@@ -341,16 +343,16 @@ public class PlayerController : MonoBehaviour {
   // Change to make a sorted list/array of enemies from min to max distance
   // Only put enemies within a certain range into the list
   // Not sorting by closest to farthest for some reason.
-  GameObject[] getEnemies(){
-    // Players position
+
+  List<GameObject> getEnemies(){
+
     Vector3 playerPos = transform.position;
 
     GameObject[] enemies;
 
     enemies = GameObject.FindGameObjectsWithTag("enemy");
-    enemies.OrderBy(t=>((playerPos - t.transform.position).magnitude));
 
-    return enemies;
+    return enemies.OrderBy(t=>((t.transform.position - playerPos).magnitude)).ToList();
 
   }
 
