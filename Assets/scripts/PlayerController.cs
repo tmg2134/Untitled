@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour {
   float totalSwingFrames;
 
   int swing_count = 0;
+  int swipe_count = 0;
   float swing_frames_left = 0;
   float dodge_frames_left = 0;
   float invincibility_frames_left = 0;
@@ -272,24 +273,15 @@ public class PlayerController : MonoBehaviour {
 
     float animationSpeedPercent = ((running)? checkSpeed/runSpeed : checkSpeed/walkSpeed * .5f);
 
-    // set parameters for animation state machine
-
     // Blend tree
     playerAnimator.SetFloat("speedPercent", animationSpeedPercent, speedSmoothTime, Time.deltaTime);
-
-    // States
-    playerAnimator.SetBool("swing_test", swing_test);
-    playerAnimator.SetBool("stab_test", stab_test);
-    playerAnimator.SetBool("swing2_test", swing2_test);
-    playerAnimator.SetBool("sliding", sliding);
-    playerAnimator.SetBool("swipe_test", swipe_test);
-    playerAnimator.SetBool("swipe2_test", swipe2_test);
 
     // Invincibility frames
     invincibility_frames_left -= 1;
 
-    // Refresh stamina
     refreshStamina();
+
+    setAnimations();
 
   }
 
@@ -326,6 +318,16 @@ public class PlayerController : MonoBehaviour {
 
   void Dodge() {
     
+  }
+
+  void setAnimations() {
+    // States
+    playerAnimator.SetBool("swing_test", swing_test);
+    playerAnimator.SetBool("stab_test", stab_test);
+    playerAnimator.SetBool("swing2_test", swing2_test);
+    playerAnimator.SetBool("sliding", sliding);
+    playerAnimator.SetBool("swipe_test", swipe_test);
+    playerAnimator.SetBool("swipe2_test", swipe2_test);
   }
 
   bool movementInput(){
@@ -432,6 +434,9 @@ public class PlayerController : MonoBehaviour {
     ///////  Subsequent attacks in the combo will also get a small reduction if they continue to attack
 
     if (Input.GetKeyDown(swingKey) && stamina > 0){
+      swipe_count = 0;
+      swipe_test = false;
+      swipe2_test = false;
       if (swing_count == 0){
         swing_test = true;
         swing_count += 1;
@@ -460,18 +465,22 @@ public class PlayerController : MonoBehaviour {
         useStamina(swing_StaminaUsage, swing2_timer);
       }
     } else if (Input.GetKeyDown(swipeKey) && stamina > 0){
-      if (swing_count == 0){
+      swing_count = 0;
+      swing_test = false;
+      stab_test =  false;
+      swing2_test = false;
+      if (swipe_count == 0){
         swipe_test = true;
-        swing_count += 1;
+        swipe_count += 1;
         swing_frames_left = swipe_timer;
         weaponCollider.increaseSwingNum();
         useStamina(swing_StaminaUsage, swipe_timer);
         currentPrepFrames = swing1_prep_frames;
         totalSwingFrames = swipe_timer;
         //  && swing_frames_left <= (swipe_timer * comboTimer)
-      } else if(swing_count == 1){
+      } else if(swipe_count == 1){
         swipe2_test = true;
-        swing_count += 1;
+        swipe_count += 1;
         swing_frames_left = swipe2_timer;
         weaponCollider.increaseSwingNum();
         currentPrepFrames = swing1_prep_frames;
@@ -490,6 +499,7 @@ public class PlayerController : MonoBehaviour {
           swipe_test = false;
           swipe2_test = false;
           swing_count = 0;
+          swipe_count = 0;
         // }
       }
     }

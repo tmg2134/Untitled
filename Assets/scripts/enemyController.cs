@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 // poly.google.com/view/56ym_pyVnel For the bear
@@ -32,6 +33,7 @@ public class enemyController : MonoBehaviour {
   public float newOriginalFrames = 100;
 
   public float speedOnAttack = .4f;
+  // public Slider healthSlider;
 
   public int hitPoints = 1;
   int maxHitPoints;
@@ -90,6 +92,12 @@ public class enemyController : MonoBehaviour {
     // framesUntilReset = resetLastSwingFrames;
 
     maxHitPoints = hitPoints;
+
+    // Vector3 sliderPos = this.transform.position;
+    // sliderPos.y += 3;
+    // Canvas aCanvas;
+    // Instantiate(aCanvas, sliderPos, this.transform.rotation, this.transform.transform);
+    // Instantiate(healthSlider, sliderPos, this.transform.rotation, );
 	}
 	
 	// Update is called once per frame
@@ -114,7 +122,6 @@ public class enemyController : MonoBehaviour {
       if(Vector3.Distance(player.position, this.transform.position) < interactDistance){
 
         player_nearby = true;
-
         Vector3 direction = player.position - this.transform.position;
 
          // Do not rotate on y axis ?if really close.
@@ -140,7 +147,7 @@ public class enemyController : MonoBehaviour {
         // Rotate towards player if not active frames or moving toward player, or prepping attack.
         // TODO
         // Make the prep and actual attack two different animations?
-        if( isAttacking == true && (attackAnimationFramesLeft <= attack_2ActiveFrames) ){
+        if(isAttacking == true && (attackAnimationFramesLeft <= attack_2ActiveFrames) ){
           activeFrames = true;
           triggerColliders();
         } else{
@@ -198,7 +205,6 @@ public class enemyController : MonoBehaviour {
 
   public void hitEnemy(int damage, int swingNum){
     // Calculate knockback, defenses, Crowd control, etc.
-
     // Only take damage if not yet hit by this swing.
     if (hitPoints > 0){
       if (swingNum != lastSwing){
@@ -209,6 +215,7 @@ public class enemyController : MonoBehaviour {
     if (hitPoints <=0){
       alive = false;
     }
+    // healthSlider.value = hitPoints;
   }
     
   public int getHitPoints(){
