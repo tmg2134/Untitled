@@ -134,6 +134,10 @@ public class PlayerController : MonoBehaviour {
   // Check on memory?.
   void Update() {
 
+    if(weaponCollider == null){
+      weaponCollider = GetComponentInChildren<check_sword_Collision>();
+    }
+
     input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     inputDir = input.normalized;
 

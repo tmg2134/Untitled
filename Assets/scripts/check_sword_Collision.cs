@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class check_sword_Collision : MonoBehaviour {
 
-  public float swordHeight;
+  // public float swordHeight;
   public int swordDamage = 1;
   public float minHitDist = 5f;
   bool weaponColliding = false;
@@ -15,6 +15,10 @@ public class check_sword_Collision : MonoBehaviour {
   Vector3 test;
 
   enemyController enemy_controller;
+
+  void Start(){
+
+  }
 
   void Update(){
 
