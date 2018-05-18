@@ -917,7 +917,7 @@ GameObject:
   - component: {fileID: 450486910}
   - component: {fileID: 450486909}
   m_Layer: 0
-  m_Name: reward
+  m_Name: BFS_reward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2810,6 +2810,7 @@ MonoBehaviour:
   yawMin: -20
   yawMax: 20
   rotationSmoothTime: 0
+  offsetPosition: {x: -0.65, y: 0, z: 2}
   zedDistance: 1.5
   lockCursor: 0
 --- !u!1 &1252253747

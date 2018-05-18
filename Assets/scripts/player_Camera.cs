@@ -18,6 +18,9 @@ public class player_Camera : MonoBehaviour {
   Vector3 rotationSmoothVelocity;
   Vector3 currentRotation;
 
+  Vector3 distanceLeft = new Vector3(.4f, 0f,0f);
+  public Vector3 offsetPosition;
+  float theOffsetX = 1f;
   float yaw;
   float pitch;
   public float zedDistance = 1.5f;
@@ -43,19 +46,19 @@ public class player_Camera : MonoBehaviour {
     // if (yawClamp){
     //   yaw = Mathf.Clamp(yaw, yawMin, yawMax);
     // }
+    Vector3 pw = new Vector3 (pitch, yaw);
     
     
-    currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3 (pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
+    currentRotation = Vector3.SmoothDamp(currentRotation, pw, ref rotationSmoothVelocity, rotationSmoothTime);
     if (customRot){
       transform.rotation = customRotation;
     } else {
       transform.eulerAngles = currentRotation;
     }
-    // Vector3 targetRotation = new Vector3(pitch, yaw);
-    // transform.eulerAngles = targetRotation;
 
-    transform.position = target.position - transform.forward * dstFromTarget;
+    Quaternion myRot = Quaternion.Euler(currentRotation);
 
+    transform.position = target.position - (myRot * offsetPosition);
 	}
 
   // public void clampYaw(){

@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour {
 
     // if (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d")){
     //   float targetRotation = Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg + cameraT.eulerAngles.y;
-    //   transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
+    transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
     // }
 
     if (Input.GetKeyDown(KeyCode.Space)){
@@ -215,8 +215,16 @@ public class PlayerController : MonoBehaviour {
       }
     }
 
+    // Dodge. Can't Dodge while swinging. Can make dodge queue up?
+    if (Input.GetKeyDown(KeyCode.LeftAlt) && dodge_frames_left <= 0 && swing_frames_left <= 0){
+      dodge_frames_left = dodge_timer;
+      // swing_frames_left -= swing_frames_left * .8f;
+      sliding = true;
+      useStamina(dodge_StaminaUsage, dodge_timer);
+    }
+
     // Only rotate while moving
-    if (movementInput() && lockedCamera == false ){
+    if (movementInput() && lockedCamera == false && dodge_frames_left <= 0){
       targetRotation = Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg + cameraT.eulerAngles.y;
     }
 
@@ -231,15 +239,7 @@ public class PlayerController : MonoBehaviour {
     // Decrement swing_frames every frame, move player if past prep frames
     checkSwingFrames();
 
-    // Dodge. Can't Dodge while swinging. Can make dodge queue up?
-
-    if (Input.GetKeyDown(KeyCode.LeftAlt) && dodge_frames_left <= 0 && swing_frames_left <= 0){
-      dodge_frames_left = dodge_timer;
-      // swing_frames_left -= swing_frames_left * .8f;
-      sliding = true;
-      useStamina(dodge_StaminaUsage, dodge_timer);
-    }
-
+  
     if (dodge_frames_left >= 0) {
       dodge_frames_left -= 1;
       
@@ -324,6 +324,7 @@ public class PlayerController : MonoBehaviour {
     
   }
 
+
   void setAnimations() {
     // States
     playerAnimator.SetBool("swing_test", swing_test);
@@ -401,6 +402,8 @@ public class PlayerController : MonoBehaviour {
     swing1_prep_frames = swing1_prep_frames / 60f * refreshRate;
     stab_prep_frames = stab_prep_frames / 60f * refreshRate;
     swing3_prep_frames = swing3_prep_frames / 60f * refreshRate;
+    swipe_timer = swipe_timer / 60f * refreshRate;
+    swipe2_timer = swipe2_timer / 60f * refreshRate;
   }
 
   void useStamina(float amt, float actionFrames){
