@@ -27,10 +27,13 @@ public class PlayerController : MonoBehaviour {
   public float dodge_timer = 12;
   public float invincibility_timer = 20;
   public float duckVel = .2f;
+  public float weaponThrowSpeed = 1f;
   public float comboTimer = .2f;
   public float swing1_prep_frames = 21;
   public float stab_prep_frames = 31;
   public float swing3_prep_frames = 20;
+  public float skill_0_timer = 130;
+  public float throwTimer = 100;
 
   float currentPrepFrames = 0;
   float totalSwingFrames;
@@ -41,6 +44,8 @@ public class PlayerController : MonoBehaviour {
   float dodge_frames_left = 0;
   float invincibility_frames_left = 0;
 
+  Vector3 moveDir;
+
   // controls
   public string upKey = "w";
   public string downKey = "s";
@@ -50,6 +55,11 @@ public class PlayerController : MonoBehaviour {
   public string swipeKey = "q";
   public string lockOn = "r";
   public string lockOff = "f";
+  public string skill_0 = "1";
+
+  // Parts of player
+  public GameObject handHoldR;
+  public Transform weaponHand;
 
   // Resources
   public int playerHitPoints = 20;
@@ -91,9 +101,10 @@ public class PlayerController : MonoBehaviour {
   bool swipe_test = false;
   bool swipe2_test = false;
   bool sliding = false;
+  bool skill_0_test = false;
+  bool weaponThrown = false;
 
   int currentIndex;
-
 
   List<GameObject> nearbyEnemies = null;
   GameObject targetEnemy = null;
@@ -124,8 +135,9 @@ public class PlayerController : MonoBehaviour {
     inputDir = input.normalized;
 
     targetRotation = Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg + cameraT.eulerAngles.y;
-
     maxStamina = stamina;
+
+    // handHoldR.AddComponent<Rigidbody>();
 
     syncFrameRates();
   }
@@ -264,7 +276,7 @@ public class PlayerController : MonoBehaviour {
 
     // If locked camera
     if(lockedCamera){
-      Vector3 moveDir = getStepDirection();
+      moveDir = getStepDirection();
       velocity = moveDir * currentSpeed + Vector3.up * velocityY;
     }
 
@@ -286,7 +298,30 @@ public class PlayerController : MonoBehaviour {
     refreshStamina();
 
     setAnimations();
+    
+  }
 
+  void LateUpdate () {
+    if((skill_0_test || swing2_test) && swing_frames_left <= throwTimer){
+      Vector3 throwDir = transform.forward;
+      if(lockedCamera){
+        throwDir = moveDir;
+      }
+      Vector3 weaponVelocity = throwDir * weaponThrowSpeed;
+      if(weaponThrown == false){
+        handHoldR.transform.parent = null;
+        // handHoldR.transform.position = transform.position;
+        handHoldR.AddComponent<CharacterController>();
+        weaponThrown = true;
+        // handHoldR.GetComponent<Rigidbody>().AddForce(weaponVelocity);
+      }
+      handHoldR.GetComponent<CharacterController>().Move(weaponVelocity * Time.deltaTime);
+      
+    } else {
+      handHoldR.transform.SetParent(weaponHand);
+      weaponThrown = false;
+      Destroy(handHoldR.GetComponent<CharacterController>());
+    }
   }
 
   // Might have to queue up the damage.
@@ -333,6 +368,28 @@ public class PlayerController : MonoBehaviour {
     playerAnimator.SetBool("sliding", sliding);
     playerAnimator.SetBool("swipe_test", swipe_test);
     playerAnimator.SetBool("swipe2_test", swipe2_test);
+    playerAnimator.SetBool("throw_sword", skill_0_test);
+
+      // if(targetEnemy != null) {
+      //     playerAnimator.SetLookAtWeight(1);
+      //     playerAnimator.SetLookAtPosition(targetEnemy.transform.position);
+      // }    
+
+    //   // Set the right hand target position and rotation, if one has been assigned
+    //   if(targetEnemy != null) {
+    //       playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand,1);
+    //       playerAnimator.SetIKRotationWeight(AvatarIKGoal.RightHand,1);  
+    //       playerAnimator.SetIKPosition(AvatarIKGoal.RightHand,targetEnemy.transform.position);
+    //       playerAnimator.SetIKRotation(AvatarIKGoal.RightHand,targetEnemy.transform.rotation);
+    //       Debug.Log(AvatarIKGoal.RightHand);
+    //   }        
+    
+    // //if the IK is not active, set the position and rotation of the hand and head back to the original position
+    // } else {
+    //   playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand,0);
+    //   playerAnimator.SetIKRotationWeight(AvatarIKGoal.RightHand,0); 
+    //   playerAnimator.SetLookAtWeight(0);
+    // }
   }
 
   bool movementInput(){
@@ -404,6 +461,8 @@ public class PlayerController : MonoBehaviour {
     swing3_prep_frames = swing3_prep_frames / 60f * refreshRate;
     swipe_timer = swipe_timer / 60f * refreshRate;
     swipe2_timer = swipe2_timer / 60f * refreshRate;
+    skill_0_timer = skill_0_timer / 60f * refreshRate;
+    throwTimer = throwTimer / 60f * refreshRate;
   }
 
   void useStamina(float amt, float actionFrames){
@@ -494,6 +553,13 @@ public class PlayerController : MonoBehaviour {
         totalSwingFrames = swipe2_timer;
         useStamina(swing_StaminaUsage, swipe_timer);
       }
+    } else if (Input.GetKeyDown(skill_0) && stamina > 0){
+      swing_frames_left = skill_0_timer;
+      skill_0_test = true;
+      currentPrepFrames = swing1_prep_frames;
+      totalSwingFrames = swipe2_timer;
+      useStamina(swing_StaminaUsage, swipe_timer);
+      weaponCollider.increaseSwingNum();
     } else {
       if (swing_frames_left <= 0){
         // if (swing_count == 0){
@@ -505,6 +571,7 @@ public class PlayerController : MonoBehaviour {
           swing2_test = false;
           swipe_test = false;
           swipe2_test = false;
+          skill_0_test = false;
           swing_count = 0;
           swipe_count = 0;
         // }

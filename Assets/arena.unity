@@ -2535,12 +2535,13 @@ MonoBehaviour:
   speedSmoothTime: 0.1
   swing_timer: 120
   stab_timer: 120
-  swing2_timer: 80
+  swing2_timer: 130
   swipe_timer: 140
   swipe2_timer: 140
   dodge_timer: 15
   invincibility_timer: 20
   duckVel: 2
+  weaponThrowSpeed: 1
   comboTimer: 0.2
   swing1_prep_frames: 21
   stab_prep_frames: 31
@@ -2553,6 +2554,7 @@ MonoBehaviour:
   swipeKey: q
   lockOn: r
   lockOff: f
+  handHoldR: {fileID: 2030803085}
   playerHitPoints: 20
   stamina: 10000
   stamina_refresh_timer: 0.5

@@ -1093,14 +1093,17 @@ MonoBehaviour:
   stab_timer: 120
   swing2_timer: 80
   swipe_timer: 90
-  swipe2_timer: 90
+  swipe2_timer: 130
   dodge_timer: 15
   invincibility_timer: 20
   duckVel: 2
+  weaponThrowSpeed: 14
   comboTimer: 0.2
   swing1_prep_frames: 21
   stab_prep_frames: 31
   swing3_prep_frames: 20
+  skill_0_timer: 130
+  throwTimer: 50
   upKey: w
   downKey: s
   leftKey: a
@@ -1109,6 +1112,9 @@ MonoBehaviour:
   swipeKey: q
   lockOn: r
   lockOff: f
+  skill_0: 1
+  handHoldR: {fileID: 250869812}
+  weaponHand: {fileID: 1531024924}
   playerHitPoints: 20
   stamina: 10
   stamina_refresh_timer: 0.5
@@ -2760,7 +2766,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 84.6
+  field of view: 55.6
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2785,7 +2791,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1250780839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -1.715}
+  m_LocalPosition: {x: 1.5, y: 1.5, z: -1.715}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 468713761}
